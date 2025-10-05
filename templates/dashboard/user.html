@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<h4>Mi tablero</h4>
+<a class="btn btn-primary" href="{% url 'reservation_new' %}">Nueva reserva</a>
+<a class="btn btn-outline-secondary ms-2" href="{% url 'history' %}">Historial</a>
+
+<h5 class="mt-4">Pendientes</h5>
+<ul>
+  {% for r in my_pending %}<li><a href="{% url 'reservation_detail' r.pk %}">{{ r }}</a></li>{% empty %}<li>Sin pendientes.</li>{% endfor %}
+</ul>
+
+<h5>Aprobadas próximas</h5>
+<ul>
+  {% for r in upcoming %}<li>{{ r }}</li>{% empty %}<li>Sin próximas.</li>{% endfor %}
+</ul>
+
+<p class="mt-3">Notificaciones sin leer: <strong>{{ unread }}</strong></p>
+{% endblock %}

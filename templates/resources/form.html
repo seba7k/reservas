@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+<h4>{{ form.instance.pk|yesno:"Editar recurso,Nuevo recurso" }}</h4>
+<form method="post">{% csrf_token %}{{ form.as_p }}
+  <button class="btn btn-primary">Guardar</button>
+  <a class="btn btn-secondary" href="{% url 'resources_list' %}">Volver</a>
+</form>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<h4>Decidir reserva #{{ reservation.id }}</h4>
+<p><strong>Espacio:</strong> {{ reservation.space }} |
+<strong>Solicitante:</strong> {{ reservation.user }} |
+<strong>Inicio:</strong> {{ reservation.start }} |
+<strong>Fin:</strong> {{ reservation.end }}</p>
+<form method="post">{% csrf_token %}{{ form.as_p }}
+  <button class="btn btn-success">Registrar decisión</button>
+</form>
+{% endblock %}

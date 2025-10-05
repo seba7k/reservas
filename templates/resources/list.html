@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Recursos{% endblock %}
+{% block content %}
+<h4>Recursos</h4>
+<a class="btn btn-success" href="{% url 'resource_new' %}">Nuevo recurso</a>
+<table class="table table-sm mt-3">
+  <tr><th>Nombre</th><th>Cantidad</th><th>Espacio</th><th></th></tr>
+  {% for r in resources %}
+  <tr>
+    <td>{{ r.name }}</td><td>{{ r.quantity }}</td><td>{{ r.space|default:"-" }}</td>
+    <td>
+      <a class="btn btn-sm btn-outline-primary" href="{% url 'resource_edit' r.pk %}">Editar</a>
+      <a class="btn btn-sm btn-outline-danger" href="{% url 'resource_delete' r.pk %}">Eliminar</a>
+    </td>
+  </tr>
+  {% empty %}<tr><td colspan="4">Sin recursos.</td></tr>{% endfor %}
+</table>
+{% endblock %}

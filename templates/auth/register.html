@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Registro{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-5">
+    <h3>Crear cuenta</h3>
+    <form method="post">{% csrf_token %}{{ form.as_p }}
+      <button class="btn btn-success w-100">Crear</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
